@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyDrops - Premium Content</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Daily<span>Drops</span></h1>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#premium">Premium</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="admin/login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="glow-text">Welcome to DailyDrops</h1>
+            <p>Your daily dose of premium content</p>
+        </div>
+    </section>
+
+    <section class="featured-section" id="premium">
+        <h2 class="section-title">Featured <span>Content</span></h2>
+        <div class="thumbnail-grid" id="thumbnailGrid">
+            <!-- Thumbnails will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Subscription Modal -->
+    <div id="subscriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal">
+            <span class="close-payment">&times;</span>
+            <div id="paymentContent"></div>
+        </div>
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content qr-modal">
+            <span class="close-qr">&times;</span>
+            <div id="qrContent"></div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <span class="close-success">&times;</span>
+            <div id="successContent">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Payment Successful!</h2>
+                <p>Thank you for your purchase. Your transaction has been recorded.</p>
+                <button class="btn" onclick="closeSuccessModal()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DailyDrops. All rights reserved.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
