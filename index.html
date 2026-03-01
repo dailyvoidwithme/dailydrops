@@ -3,82 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailyDrops - Premium Content</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>DailyDrops | Premium Content</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="animated-bg"></div>
+    <!-- Premium Cursor -->
+    <div class="custom-cursor"></div>
     
-    <nav class="navbar">
-        <div class="logo">
-            <h1>Daily<span>Drops</span></h1>
-        </div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#premium">Premium</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="admin/login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
+    <!-- Animated Background -->
+    <div class="premium-bg">
+        <div class="gradient-sphere"></div>
+        <div class="gradient-sphere-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="premium-nav">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="#" class="logo">
+                    <span class="logo-text">DAILY</span>
+                    <span class="logo-highlight">DROPS</span>
+                </a>
+                <div class="logo-glow"></div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#collection" class="nav-link">Collection</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="admin/login.html" class="nav-link admin-link">
+                    <i class="fas fa-crown"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="glow-text">Welcome to DailyDrops</h1>
-            <p>Your daily dose of premium content</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="premium-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Premium Quality</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">Experience The</span>
+                    <span class="title-line gradient-text">Finest Content</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Curated premium drops delivered daily. Join an exclusive community of content enthusiasts.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5K+</span>
+                        <span class="stat-label">Premium Drops</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">User Rating</span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#collection" class="premium-btn primary">
+                        <span>Explore Collection</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#features" class="premium-btn secondary">
+                        <span>How It Works</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="floating-card card-1">
+                    <i class="fas fa-crown"></i>
+                    <span>Premium</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-bolt"></i>
+                    <span>Daily Drops</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-gem"></i>
+                    <span>Exclusive</span>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop" alt="Premium Content" class="hero-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section class="featured-section" id="premium">
-        <h2 class="section-title">Featured <span>Content</span></h2>
-        <div class="thumbnail-grid" id="thumbnailGrid">
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Why Choose Us</span>
+            <h2 class="section-title">Premium Features</h2>
+            <p class="section-description">Experience content like never before with our exclusive features</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Access</h3>
+                <p>Get immediate access to premium content right after payment confirmation</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Payment</h3>
+                <p>100% secure transactions with UPI payment gateway</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Premium Quality</h3>
+                <p>Hand-picked content with highest quality standards</p>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Dedicated support team always ready to help</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection" class="collection-section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Our Collection</span>
+            <h2 class="section-title">Featured Drops</h2>
+            <p class="section-description">Discover our most popular premium collections</p>
+        </div>
+        
+        <div class="collection-grid" id="thumbnailGrid">
             <!-- Thumbnails will be loaded dynamically -->
         </div>
     </section>
 
-    <!-- Subscription Modal -->
-    <div id="subscriptionModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalContent"></div>
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Membership Plans</span>
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-description">Select the perfect plan that suits your needs</p>
         </div>
-    </div>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content payment-modal">
-            <span class="close-payment">&times;</span>
-            <div id="paymentContent"></div>
-        </div>
-    </div>
-
-    <!-- QR Modal -->
-    <div id="qrModal" class="modal">
-        <div class="modal-content qr-modal">
-            <span class="close-qr">&times;</span>
-            <div id="qrContent"></div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content success-modal">
-            <span class="close-success">&times;</span>
-            <div id="successContent">
-                <i class="fas fa-check-circle success-icon"></i>
-                <h2>Payment Successful!</h2>
-                <p>Thank you for your purchase. Your transaction has been recorded.</p>
-                <button class="btn" onclick="closeSuccessModal()">Continue</button>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-badge">Popular</div>
+                <div class="pricing-header">
+                    <h3>Normal</h3>
+                    <div class="price">
+                        <span class="currency">₹</span>
+                        <span class="amount">99</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Access to basic content</li>
+                    <li><i class="fas fa-check"></i> Daily drops</li>
+                    <li><i class="fas fa-check"></i> HD Quality</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+                <button class="pricing-btn" onclick="selectPlan('normal')">
+                    <span>Get Started</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="pricing-badge">Best Value</div>
+                <div class="pricing-header">
+                    <h3>Ultra Premium</h3>
+                    <div class="price">
+                        <span class="currency">₹</span>
+                        <span class="amount">189</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Everything in Normal</li>
+                    <li><i class="fas fa-check"></i> Exclusive ultra content</li>
+                    <li><i class="fas fa-check"></i> 4K Quality</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Early access</li>
+                </ul>
+                <button class="pricing-btn" onclick="selectPlan('ultra')">
+                    <span>Get Started</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Testimonials</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-description">Join thousands of satisfied customers</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Best content platform I've ever used. The quality is outstanding and the support team is very responsive."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                    </div>
+                    <div class="author-info">
+                        <h4>Rahul Sharma</h4>
+                        <span>Premium Member</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Ultra premium is totally worth it! The exclusive content and early access features are amazing."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                    </div>
+                    <div class="author-info">
+                        <h4>Priya Patel</h4>
+                        <span>Ultra Member</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The daily drops keep getting better. Excellent value for money and great community."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                    </div>
+                    <div class="author-info">
+                        <h4>Amit Kumar</h4>
+                        <span>Premium Member</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="subscriptionModal" class="premium-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div id="modalContent" class="modal-body"></div>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 DailyDrops. All rights reserved.</p>
+    <div id="paymentModal" class="premium-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div id="paymentContent" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="qrModal" class="premium-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div id="qrContent" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="successModal" class="premium-modal">
+        <div class="modal-content success-modal">
+            <div class="success-animation">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Payment Successful!</h2>
+            <p>Thank you for your purchase. Your transaction has been recorded.</p>
+            <button class="premium-btn primary" onclick="closeSuccessModal()">Continue</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-wrapper">
+                    <span class="logo-text">DAILY</span>
+                    <span class="logo-highlight">DROPS</span>
+                </div>
+                <p>Premium content delivered daily. Join the elite community.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#collection">Collection</a>
+                    <a href="#features">Features</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Contact</h4>
+                    <a href="mailto:support@dailydrops.com">support@dailydrops.com</a>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 DailyDrops. All rights reserved. Crafted with <i class="fas fa-heart"></i> for premium experience</p>
+        </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
 </body>
