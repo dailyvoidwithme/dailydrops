@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DailyDrops</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            padding: 100px 5% 2rem;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .admin-title {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .admin-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .section-header h3 {
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+        
+        .add-btn {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-btn {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+        }
+        
+        .delete-btn {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+        
+        .thumbnail-preview {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .filter-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .filter-input:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+        
+        /* Modal Styles for Admin */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .admin-modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .close-admin-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .close-admin-modal:hover {
+            color: #ffd700;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Daily<span>Drops</span> <span style="font-size: 1rem;">Admin</span></h1>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Site</a>
+        </div>
+    </nav>
+    
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2 class="admin-title"><i class="fas fa-crown"></i> Admin Dashboard</h2>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+        
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-value" id="totalEarnings">₹0</div>
+                <div class="stat-label">Total Earnings</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-value" id="totalTransactions">0</div>
+                <div class="stat-label">Total Transactions</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-crown"></i></div>
+                <div class="stat-value" id="ultraMembers">0</div>
+                <div class="stat-label">Ultra Members</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <div class="stat-value" id="normalMembers">0</div>
+                <div class="stat-label">Normal Members</div>
+            </div>
+        </div>
+        
+        <!-- Thumbnails Management -->
+        <div class="admin-section">
+            <div class="section-header">
+                <h3><i class="fas fa-images"></i> Manage Thumbnails</h3>
+                <button class="add-btn" onclick="openThumbnailModal()">
+                    <i class="fas fa-plus"></i> Add New Thumbnail
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <table id="thumbnailsTable">
+                    <thead>
+                        <tr>
+                            <th>Preview</th>
+                            <th>Caption</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="thumbnailsList">
+                        <!-- Thumbnails will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Transactions Management -->
+        <div class="admin-section">
+            <div class="section-header">
+                <h3><i class="fas fa-history"></i> Transaction History</h3>
+            </div>
+            
+            <div class="filter-section">
+                <input type="text" class="filter-input" id="searchTransaction" placeholder="Search by Telegram/UTR/WhatsApp..." onkeyup="filterTransactions()">
+                <select class="filter-input" id="filterType" onchange="filterTransactions()">
+                    <option value="all">All Types</option>
+                    <option value="normal">Normal</option>
+                    <option value="ultra">Ultra Premium</option>
+                </select>
+            </div>
+            
+            <div class="table-container">
+                <table id="transactionsTable">
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Telegram</th>
+                            <th>WhatsApp</th>
+                            <th>UTR/TRN</th>
+                            <th>Content</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsList">
+                        <!-- Transactions will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Thumbnail Modal -->
+    <div id="thumbnailModal" class="admin-modal">
+        <div class="admin-modal-content">
+            <span class="close-admin-modal" onclick="closeThumbnailModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 2rem;" id="modalTitle">Add New Thumbnail</h2>
+            
+            <form id="thumbnailForm" onsubmit="event.preventDefault(); saveThumbnail()">
+                <input type="hidden" id="thumbnailId">
+                
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="thumbnailImage" placeholder="https://example.com/image.jpg" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Caption</label>
+                    <input type="text" id="thumbnailCaption" placeholder="Enter caption" required>
+                </div>
+                
+                <button type="submit" class="btn" id="saveBtn">Save Thumbnail</button>
+                <button type="button" class="btn btn-secondary" onclick="closeThumbnailModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../js/data.js"></script>
+    <script src="../js/admin.js"></script>
+    
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
